@@ -1,0 +1,370 @@
+[
+    {
+      "recipeName": "Spaghetti Bolognese",
+      "ingredients": [
+        "Spaghetti",
+        "Ground beef",
+        "Tomato sauce",
+        "Onion",
+        "Garlic",
+        "Olive oil",
+        "Salt",
+        "Pepper"
+      ],
+      "cookingTime": 30,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "description": "A classic Italian pasta dish with a rich and savory meat sauce.",
+      "photoLink": "https://example.com/spaghetti-bolognese.jpg",
+      "averageRating": 4.5
+    },
+    {
+      "recipeName": "Chicken Caesar Salad",
+      "ingredients": [
+        "Chicken breast",
+        "Romaine lettuce",
+        "Caesar dressing",
+        "Parmesan cheese",
+        "Croutons"
+      ],
+      "cookingTime": 10,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "description": "A fresh and tasty salad with grilled chicken, crisp lettuce, and creamy Caesar dressing.",
+      "photoLink": "https://example.com/chicken-caesar-salad.jpg",
+      "averageRating": 4.2
+    },
+    {
+      "recipeName": "Beef Tacos",
+      "ingredients": [
+        "Ground beef",
+        "Taco seasoning",
+        "Taco shells",
+        "Lettuce",
+        "Tomato",
+        "Cheddar cheese",
+        "Sour cream"
+      ],
+      "cookingTime": 15,
+      "difficulty": "Easy",
+      "cuisine": "Mexican",
+      "description": "A quick and flavorful Mexican dish with seasoned beef and fresh toppings.",
+      "photoLink": "https://example.com/beef-tacos.jpg",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Vegetable Stir Fry",
+      "ingredients": [
+        "Broccoli",
+        "Carrot",
+        "Bell pepper",
+        "Snow peas",
+        "Soy sauce",
+        "Garlic",
+        "Ginger",
+        "Olive oil"
+      ],
+      "cookingTime": 15,
+      "difficulty": "Medium",
+      "cuisine": "Asian",
+      "description": "A healthy and vibrant stir-fry with fresh vegetables and a savory sauce.",
+      "photoLink": "https://example.com/vegetable-stir-fry.jpg",
+      "averageRating": 4.3
+    },
+    {
+      "recipeName": "Pancakes",
+      "ingredients": [
+        "Flour",
+        "Milk",
+        "Eggs",
+        "Sugar",
+        "Butter",
+        "Baking powder",
+        "Salt"
+      ],
+      "cookingTime": 10,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "description": "Fluffy and golden pancakes, perfect for a classic breakfast.",
+      "photoLink": "https://example.com/pancakes.jpg",
+      "averageRating": 4.8
+    },
+    {
+      "recipeName": "Margarita Pizza",
+      "ingredients": [
+        "Pizza dough",
+        "Tomato sauce",
+        "Mozzarella cheese",
+        "Basil",
+        "Olive oil"
+      ],
+      "cookingTime": 20,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "description": "A simple yet delicious pizza with fresh mozzarella, tomato sauce, and basil.",
+      "photoLink": "https://example.com/margarita-pizza.jpg",
+      "averageRating": 4.6
+    },
+    {
+      "recipeName": "Chicken Curry",
+      "ingredients": [
+        "Chicken breast",
+        "Onion",
+        "Garlic",
+        "Ginger",
+        "Curry powder",
+        "Coconut milk",
+        "Tomato paste"
+      ],
+      "cookingTime": 30,
+      "difficulty": "Medium",
+      "cuisine": "Indian",
+      "description": "A fragrant and spicy curry with tender chicken and a creamy sauce.",
+      "photoLink": "https://example.com/chicken-curry.jpg",
+      "averageRating": 4.4
+    },
+    {
+      "recipeName": "Chocolate Chip Cookies",
+      "ingredients": [
+        "Butter",
+        "Sugar",
+        "Brown sugar",
+        "Eggs",
+        "Vanilla extract",
+        "Flour",
+        "Baking soda",
+        "Salt",
+        "Chocolate chips"
+      ],
+      "cookingTime": 10,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "description": "Classic cookies with a crisp edge and soft, chewy center, loaded with chocolate chips.",
+      "photoLink": "https://example.com/chocolate-chip-cookies.jpg",
+      "averageRating": 4.9
+    },
+    {
+      "recipeName": "Mushroom Risotto",
+      "ingredients": [
+        "Arborio rice",
+        "Mushrooms",
+        "Onion",
+        "Garlic",
+        "Parmesan cheese",
+        "Butter",
+        "Chicken broth",
+        "White wine"
+      ],
+      "cookingTime": 30,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "description": "A creamy and savory rice dish with earthy mushrooms and Parmesan cheese.",
+      "photoLink": "https://example.com/mushroom-risotto.jpg",
+      "averageRating": 4.6
+    },
+    {
+      "recipeName": "Lemon Garlic Shrimp Pasta",
+      "ingredients": [
+        "Pasta",
+        "Shrimp",
+        "Lemon",
+        "Garlic",
+        "Olive oil",
+        "Parmesan cheese",
+        "Parsley"
+      ],
+      "cookingTime": 15,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "description": "A light and flavorful pasta dish with succulent shrimp and a tangy lemon-garlic sauce.",
+      "photoLink": "https://example.com/lemon-garlic-shrimp-pasta.jpg",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Tomato Soup",
+      "ingredients": [
+        "Tomatoes",
+        "Onion",
+        "Garlic",
+        "Vegetable broth",
+        "Basil",
+        "Olive oil",
+        "Salt",
+        "Pepper"
+      ],
+      "cookingTime": 25,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "description": "A warm and comforting soup made with ripe tomatoes and fresh basil.",
+      "photoLink": "https://example.com/tomato-soup.jpg",
+      "averageRating": 4.5
+    },
+    {
+      "recipeName": "Greek Salad",
+      "ingredients": [
+        "Cucumber",
+        "Tomato",
+        "Red onion",
+        "Olives",
+        "Feta cheese",
+        "Olive oil",
+        "Lemon juice",
+        "Oregano"
+      ],
+      "cookingTime": 0,
+      "difficulty": "Easy",
+      "cuisine": "Greek",
+      "description": "A refreshing salad with crisp vegetables, briny olives, and tangy feta cheese.",
+      "photoLink": "https://example.com/greek-salad.jpg",
+      "averageRating": 4.3
+    },
+    {
+      "recipeName": "BBQ Ribs",
+      "ingredients": [
+        "Pork ribs",
+        "BBQ sauce",
+        "Brown sugar",
+        "Paprika",
+        "Garlic powder",
+        "Onion powder",
+        "Salt",
+        "Pepper"
+      ],
+      "cookingTime": 180,
+      "difficulty": "Hard",
+      "cuisine": "American",
+      "description": "Tender and juicy ribs with a sweet and smoky BBQ sauce.",
+      "photoLink": "https://example.com/bbq-ribs.jpg",
+      "averageRating": 4.8
+    },
+    {
+      "recipeName": "Banana Bread",
+      "ingredients": [
+        "Bananas",
+        "Flour",
+        "Sugar",
+        "Butter",
+        "Eggs",
+        "Baking soda",
+        "Vanilla extract",
+        "Salt"
+      ],
+      "cookingTime": 60,
+      "difficulty": "Easy",
+      "cuisine": "American",
+      "description": "A moist and flavorful quick bread made with ripe bananas.",
+      "photoLink": "https://example.com/banana-bread.jpg",
+      "averageRating": 4.7
+    },
+    {
+      "recipeName": "Egg Fried Rice",
+      "ingredients": [
+        "Rice",
+        "Eggs",
+        "Soy sauce",
+        "Peas",
+        "Carrot",
+        "Onion",
+        "Garlic",
+        "Sesame oil"
+      ],
+      "cookingTime": 10,
+      "difficulty": "Easy",
+      "cuisine": "Chinese",
+      "description": "A quick and easy stir-fried rice dish with scrambled eggs and vegetables.",
+      "photoLink": "https://example.com/egg-fried-rice.jpg",
+      "averageRating": 4.5
+    },
+    {
+      "name": "Beef Stew",
+      "ingredients": [
+        "Beef",
+        "Potatoes",
+        "Carrots",
+        "Onion",
+        "Garlic",
+        "Beef broth",
+        "Tomato paste",
+        "Thyme"
+      ],
+      "prep_time": 120,
+      "difficulty": "Medium",
+      "cuisine": "American",
+      "description": "A hearty stew with tender beef and root vegetables in a rich broth.",
+      "image_url": "https://example.com/beef-stew.jpg",
+      "rating": 4.6
+    },
+    {
+      "name": "Cinnamon Rolls",
+      "ingredients": [
+        "Flour",
+        "Sugar",
+        "Butter",
+        "Yeast",
+        "Milk",
+        "Cinnamon",
+        "Brown sugar",
+        "Cream cheese"
+      ],
+      "prep_time": 25,
+      "difficulty": "Hard",
+      "cuisine": "American",
+      "description": "Soft and gooey rolls with a cinnamon-sugar filling and cream cheese frosting.",
+      "image_url": "https://example.com/cinnamon-rolls.jpg",
+      "rating": 4.9
+    },
+    {
+      "name": "Caprese Salad",
+      "ingredients": [
+        "Tomatoes",
+        "Mozzarella cheese",
+        "Basil",
+        "Olive oil",
+        "Balsamic vinegar",
+        "Salt",
+        "Pepper"
+      ],
+      "prep_time": 0,
+      "difficulty": "Easy",
+      "cuisine": "Italian",
+      "description": "A simple and elegant salad with fresh tomatoes, mozzarella, and basil.",
+      "image_url": "https://example.com/caprese-salad.jpg",
+      "rating": 4.4
+    },
+    {
+      "name": "Chicken Alfredo",
+      "ingredients": [
+        "Chicken breast",
+        "Pasta",
+        "Butter",
+        "Cream",
+        "Parmesan cheese",
+        "Garlic",
+        "Parsley"
+      ],
+      "prep_time": 20,
+      "difficulty": "Medium",
+      "cuisine": "Italian",
+      "description": "A rich and creamy pasta dish with tender chicken and a Parmesan cream sauce.",
+      "image_url": "https://example.com/chicken-alfredo.jpg",
+      "rating": 4.6
+    },
+    {
+      "name": "Apple Pie",
+      "ingredients": [
+        "Apples",
+        "Flour",
+        "Sugar",
+        "Butter",
+        "Cinnamon",
+        "Nutmeg",
+        "Pie crust"
+      ],
+      "prep_time": 45,
+      "difficulty": "Medium",
+      "cuisine": "American",
+      "description": "A classic dessert with a flaky crust and sweet, spiced apple filling.",
+      "image_url": "https://example.com/apple-pie.jpg",
+      "rating": 4.8
+    }
+]
