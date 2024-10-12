@@ -14,10 +14,14 @@ exports.getMovies = async (req, res) => {
             // Use regular expressions for case-insensitive matching of movie titles
             query.title = { $regex: title, $options: 'i' };
         }
-        
+
         if (genre) {
             // Exact match for genre
             query.genres = { $in: [genre] };
+        }
+        if (year) {
+            // Exact match for release year
+            query.year = Number(year);
         }
 
         // Fetch movies from the database based on the query object
