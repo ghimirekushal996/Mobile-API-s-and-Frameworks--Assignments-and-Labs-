@@ -18,3 +18,17 @@ exports.findAllTeams = async (req, res) => {
     res.status(500).json({ message: 'Server error: Could not fetch teams' });
   }
 };
+
+// Function to get a single team by Id
+exports.getTeamById = async (req, res) => {
+  try {
+      const team = await Teams.findById(req.params.id);
+      if (!team) {
+          return res.status(404).send('Team not found');
+      }
+      res.status(200).json(team);
+  } catch (e) {
+      console.error(e);
+      res.status(500).send('Error retrieving the team');
+  }
+};
