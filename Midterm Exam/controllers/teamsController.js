@@ -32,3 +32,18 @@ exports.getTeamById = async (req, res) => {
       res.status(500).send('Error retrieving the team');
   }
 };
+
+
+// Function to get a team by city
+exports.getTeamByCity = async (req, res) => {
+  try {
+    const team = await Teams.find({ city: req.params.city });
+      if (!team) {
+          return res.status(404).send('Team not found');
+      }
+      res.status(200).json(team);
+  } catch (e) {
+      console.error(e);
+      res.status(500).send('Error retrieving the team');
+  }
+};
