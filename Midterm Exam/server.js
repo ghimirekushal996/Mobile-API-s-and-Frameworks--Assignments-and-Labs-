@@ -10,7 +10,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
 // import routes of a teams
-const recipeRoutes = require('./routes/teams');
+const teamsRoutes = require('./routes/teams');
 
 dotenv.config();
 
