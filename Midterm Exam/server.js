@@ -8,8 +8,9 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const path = require('path'); // Import path module
 
-// import routes of a teams
+// Import routes for teams
 const teamsRoutes = require('./routes/teams');
 
 dotenv.config();
@@ -19,6 +20,9 @@ const port = process.env.PORT || 3000;
 
 // Middleware
 app.use(express.json());
+
+// Serve static files from the 'views' directory
+app.use(express.static(path.join(__dirname, 'views')));
 
 // Routes
 app.use('/api/teams', teamsRoutes);
@@ -34,4 +38,3 @@ mongoose.connect(process.env.MONGODB_URI)
   .catch((error) => {
     console.log('Error connecting to MongoDB:', error);
   });
-
