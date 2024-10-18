@@ -1,0 +1,38 @@
+[
+    {
+      "teamId": 301,
+      "teamName": "Los Angeles Lakers",
+      "city": "Los Angeles",
+      "founded": "1947",
+      "coach": "Darvin Ham"
+    },
+    {
+      "teamId": 302,
+      "teamName": "Chicago Bulls",
+      "city": "Chicago",
+      "founded": "1966",
+      "coach": "Billy Donovan"
+    },
+    {
+      "teamId": 303,
+      "teamName": "Golden State Warriors",
+      "city": "San Francisco",
+      "founded": "1946",
+      "coach": "Steve Kerr"
+    },
+    {
+      "teamId": 304,
+      "teamName": "Miami Heat",
+      "city": "Miami",
+      "founded": "1988",
+      "coach": "Erik Spoelstra"
+    },
+    {
+      "teamId": 305,
+      "teamName": "Boston Celtics",
+      "city": "Boston",
+      "founded": "1946",
+      "coach": "Joe Mazzulla"
+    }
+  ]
+  
