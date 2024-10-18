@@ -21,7 +21,7 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 // Routes
-app.use('/api/teams', recipeRoutes);
+app.use('/api/teams', teamsRoutes);
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI)
