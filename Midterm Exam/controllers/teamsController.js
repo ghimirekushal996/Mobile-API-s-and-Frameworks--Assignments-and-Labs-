@@ -22,7 +22,7 @@ exports.findAllTeams = async (req, res) => {
 // Function to get a single team by Id
 exports.getTeamById = async (req, res) => {
   try {
-      const team = await Teams.findById(req.params.teamId);
+    const team = await Teams.findOne({ teamId: req.params.teamId });
       if (!team) {
           return res.status(404).send('Team not found');
       }

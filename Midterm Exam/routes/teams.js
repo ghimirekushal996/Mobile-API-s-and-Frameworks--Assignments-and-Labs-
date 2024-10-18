@@ -7,11 +7,12 @@
 
 const express = require('express');
 const router = express.Router();
-const { findAllTeams } = require('../controllers/teamsController');
+const { findAllTeams, getTeamById } = require('../controllers/teamsController');
 
 
 
 // Define the endpoint for fetching all teams
 router.get('/', findAllTeams);
+router.get('/:teamId', getTeamById)
 
 module.exports = router;
