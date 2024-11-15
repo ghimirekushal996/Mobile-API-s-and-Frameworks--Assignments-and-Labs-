@@ -7,6 +7,9 @@ const router = express.Router();
 
 // Register API
 router.post('/register', async (req, res) => {
+
+    console.log("Registering..");
+
     const { username, email, password } = req.body;
 
     // Hash the password
