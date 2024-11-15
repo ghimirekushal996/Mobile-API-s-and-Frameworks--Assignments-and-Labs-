@@ -38,6 +38,19 @@ router.get('/recipes', authenticateToken, async (req, res) => {
     }
 });
 
+// Get a single recipe by ID
+router.get('/recipes/:id', authenticateToken, async (req, res) => {
+    try {
+        const recipe = await Recipe.findById(req.params.id);
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recipe not found.' });
+        }
+        res.status(200).json(recipe);
+    } catch (error) {
+        res.status(500).json({ message: 'Error fetching recipe.', error });
+    }
+});
+
 
 
 module.exports = router;
