@@ -30,4 +30,12 @@ router.post('/register', async (req, res) => {
     }
 });
 
+
+router.get('/testing', async (req, res) => {
+
+    console.log("testing..");
+
+    res.status(201).json({ message: 'User registered successfully.' });
+});
+
 module.exports = router;

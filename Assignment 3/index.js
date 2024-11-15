@@ -1,19 +1,12 @@
-// index.js
 const http = require('http');
 const dotenv = require('dotenv');
-const { API_PORT} = process.env;
 const express = require('express');
-const routes = require('./routes/routes'); // Import routes
-const connectDB = require('./database/db'); 
-
-const userRoutes = require('./routes/user'); // import user routes
+const connectDB = require('./database/db');
+const userRoutes = require('./routes/user');
 
 dotenv.config();
 
-// Set up the port from the .env file
-const port = process.env.API_PORT;
-
-
+const port = process.env.API_PORT || 3000;
 const app = express();
 
 // Connect to MongoDB
@@ -26,7 +19,7 @@ app.use(express.json());
 app.use('/api/users', userRoutes);
 
 // Create the server
-const server = http.createServer(routes);
+const server = http.createServer(app);
 
 // Start the server
 server.listen(port, () => {
