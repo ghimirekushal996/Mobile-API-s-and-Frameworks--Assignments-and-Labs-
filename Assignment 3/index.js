@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const express = require('express');
 const connectDB = require('./database/db');
 const userRoutes = require('./routes/user');
+const recipeRoutes = require('./routes/routes')
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/users', userRoutes);
+app.use('/api/routes', recipeRoutes);
 
 // Create the server
 const server = http.createServer(app);
