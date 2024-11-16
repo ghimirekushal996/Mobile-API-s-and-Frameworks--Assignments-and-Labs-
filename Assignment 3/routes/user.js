@@ -1,3 +1,10 @@
+/**
+ * File name: user.js
+ * Student Name: Kushal Ghimire
+ * StudentID: 200555588
+ * Date: November 15, 2024
+ */
+
 // routes/user.js
 const express = require('express');
 const bcrypt = require('bcrypt');

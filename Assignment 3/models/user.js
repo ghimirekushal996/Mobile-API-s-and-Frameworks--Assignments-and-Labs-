@@ -1,3 +1,10 @@
+/**
+ * File name: user.js
+ * Student Name: Kushal Ghimire
+ * StudentID: 200555588
+ * Date: November 15, 2024
+ */
+
 // models/user.js
 const mongoose = require('mongoose');
 

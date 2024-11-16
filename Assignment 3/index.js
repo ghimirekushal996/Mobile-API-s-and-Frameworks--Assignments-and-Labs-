@@ -1,3 +1,10 @@
+/**
+ * File name: index.js
+ * Student Name: Kushal Ghimire
+ * StudentID: 200555588
+ * Date: November 15, 2024
+ */
+
 const http = require('http');
 const dotenv = require('dotenv');
 const express = require('express');

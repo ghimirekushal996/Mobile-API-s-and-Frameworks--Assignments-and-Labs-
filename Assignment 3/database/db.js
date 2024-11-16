@@ -1,3 +1,11 @@
+/**
+ * File name: db.js
+ * Student Name: Kushal Ghimire
+ * StudentID: 200555588
+ * Date: November 15, 2024
+ */
+
+
 const mongoose = require('mongoose');
 
 // Function to connect to MongoDB
