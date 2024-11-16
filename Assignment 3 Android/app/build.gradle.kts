@@ -44,4 +44,9 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation ("androidx.recyclerview:recyclerview:1.2.1")
     implementation ("androidx.cardview:cardview:1.0.0")
+    implementation ("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor ("com.github.bumptech.glide:compiler:4.15.1")
+    implementation ("com.squareup.picasso:picasso:2.8")
+    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.11")
+
 }
