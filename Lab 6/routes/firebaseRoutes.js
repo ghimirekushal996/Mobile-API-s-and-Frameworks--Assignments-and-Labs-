@@ -2,7 +2,7 @@
 
 const express = require("express");
 const router = express.Router();
-const verifyToken = require("./controllers/firebaseController");
+const verifyToken = require("../controllers/firebaseController");
 
 // Protected route (only accessible with valid token)
 router.get("/protected", verifyToken, (req, res) => {
