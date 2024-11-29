@@ -1,6 +1,6 @@
 // firebaseController.js
 
-const admin = require("./firebaseModel");
+const admin = require("../models/firebaseModel");
 
 const verifyToken = async (req, res, next) => {
   const authHeader = req.header("Authorization");

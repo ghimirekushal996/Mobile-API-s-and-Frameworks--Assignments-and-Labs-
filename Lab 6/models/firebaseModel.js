@@ -1,7 +1,7 @@
 // firebaseModel.js
 
 const admin = require("firebase-admin");
-const serviceAccount = require("./firebase-adminsdk.json"); // Firebase service account key
+const serviceAccount = require("../firebase-adminsdk.json"); // Firebase service account key
 
 if (!admin.apps.length) {
   admin.initializeApp({
