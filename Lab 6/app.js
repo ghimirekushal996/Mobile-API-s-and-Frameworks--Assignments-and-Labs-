@@ -3,7 +3,7 @@
 const express = require("express");
 const cors = require("cors");
 const path = require("path");
-const firebaseRoutes = require("../routes/firebaseRoutes");
+const firebaseRoutes = require("./Routes/firebaseRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
