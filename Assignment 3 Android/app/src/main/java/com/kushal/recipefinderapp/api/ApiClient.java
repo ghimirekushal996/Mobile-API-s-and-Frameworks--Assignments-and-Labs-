@@ -13,8 +13,8 @@ import java.io.IOException;
 
 public class ApiClient {
 
-    private static final String BASE_URL = "https://assignment-3-91ss.onrender.com/api/routes/";
-    private static final String STATIC_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzM3ZTI5Y2U5MWZlNTBmZmM2NjFjNGYiLCJpYXQiOjE3MzE3MjAxMDIsImV4cCI6MTczMTcyMzcwMn0.jakoZgnttMqb6GCPWG9RSSz0015qu8XAyyefEdZjswA";
+    private static final String BASE_URL = "http://10.0.2.3:3000/api/routes/recipes/";
+    private static final String STATIC_TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NzUyYjc0ZDI1ZTdiZmJiM2NiNDZmYTUiLCJpYXQiOjE3MzM0NzQxNTksImV4cCI6MTczMzQ3Nzc1OX0.-KE1v-IZL_cvs16a8LfSKXeHBeApx9DZ7VfvGYUijrQ";
     private static Retrofit retrofit;
 
     public static Retrofit getClient() {
