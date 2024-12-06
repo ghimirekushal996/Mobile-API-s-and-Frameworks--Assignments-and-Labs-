@@ -22,7 +22,9 @@ public interface ApiService {
     @POST("auth/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
 
-    // No need to manually pass the Authorization token here
     @GET("recipe/")
     Call<List<Recipe>> getRecipes(@Header("Authorization") String token);
+
+    @POST("recipe/create")
+    Call<AddRecipe> createRecipe(@Header("Authorization") String token, @Body AddRecipe recipe);
 }
