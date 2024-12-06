@@ -38,6 +38,33 @@ router.post('/register', async (req, res) => {
 });
 
 
+// Login API
+router.post('/login', async (req, res) => {
+    const { email, password } = req.body;
 
+    // Find the user by email
+    const user = await User.findOne({ email });
+    if (!user) {
+        return res.status(400).json({ message: 'Invalid email or password.' });
+    }
+
+    // Compare passwords
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+        return res.status(400).json({ message: 'Invalid email or password.' });
+    }
+
+    // Generate JWT token
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token });
+});
+
+
+router.get('/testing', async (req, res) => {
+
+    console.log("testing..");
+
+    res.status(201).json({ message: 'User registered successfully.' });
+});
 
 module.exports = router;
