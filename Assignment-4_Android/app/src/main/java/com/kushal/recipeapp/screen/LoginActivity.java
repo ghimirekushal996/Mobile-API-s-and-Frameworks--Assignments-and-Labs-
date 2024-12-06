@@ -5,7 +5,18 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.kushal.recipeapp.MainActivity;
+import com.kushal.recipeapp.R;
+import com.kushal.recipeapp.controller.LoginController;
+import com.kushal.recipeapp.models.LoginRequest;
+import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 
 public class LoginActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
@@ -36,6 +47,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
     private void performLogin(String email, String password) {
         LoginRequest request = new LoginRequest(email, password);
         loginController.loginUser(request, new LoginController.LoginCallback() {
@@ -59,4 +71,3 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 }
-

@@ -2,6 +2,8 @@ package com.kushal.recipeapp.api;
 
 import android.content.Context;
 
+import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
+
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

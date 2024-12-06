@@ -4,6 +4,8 @@ import android.content.Context;
 
 import com.kushal.recipeapp.api.ApiClient;
 import com.kushal.recipeapp.api.ApiService;
+import com.kushal.recipeapp.models.LoginRequest;
+import com.kushal.recipeapp.models.LoginResponse;
 
 import retrofit2.Call;
 import retrofit2.Callback;

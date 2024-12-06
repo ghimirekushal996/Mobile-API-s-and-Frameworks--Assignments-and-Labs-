@@ -12,4 +12,3 @@ public class LoginResponse {
         return token;
     }
 }
-}

@@ -1,5 +1,7 @@
 package com.kushal.recipeapp.api;
 
+import com.kushal.recipeapp.models.LoginRequest;
+import com.kushal.recipeapp.models.LoginResponse;
 import com.kushal.recipeapp.models.User;
 
 import java.util.List;
@@ -19,3 +21,4 @@ public interface ApiService {
 
     @POST("auth/login")
     Call<LoginResponse> loginUser(@Body LoginRequest loginRequest);
+}

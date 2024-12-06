@@ -6,8 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
+import com.kushal.recipeapp.R;
+import com.kushal.recipeapp.controller.RegisterController;
+import com.kushal.recipeapp.models.User;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etFullName, etEmail, etPassword;
@@ -72,4 +81,3 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
 }
-
