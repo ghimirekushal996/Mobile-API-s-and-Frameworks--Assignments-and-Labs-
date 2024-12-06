@@ -75,6 +75,20 @@ router.put('/recipes/:id', authenticateToken, async (req, res) => {
     }
 });
 
+// Delete a recipe by ID
+router.delete('/recipes/:id', authenticateToken, async (req, res) => {
+    try {
+        const deletedRecipe = await Recipe.findByIdAndDelete(req.params.id);
+
+        if (!deletedRecipe) {
+            return res.status(404).json({ message: 'Recipe not found.' });
+        }
+
+        res.status(200).json({ message: 'Recipe deleted successfully.' });
+    } catch (error) {
+        res.status(500).json({ message: 'Error deleting recipe.', error });
+    }
+});
 
 module.exports = router;
 
