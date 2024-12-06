@@ -30,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        
+
         etFullName = findViewById(R.id.etFullName);
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
