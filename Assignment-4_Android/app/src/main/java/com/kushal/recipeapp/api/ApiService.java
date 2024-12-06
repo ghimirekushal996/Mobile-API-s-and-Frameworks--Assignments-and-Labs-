@@ -36,3 +36,9 @@ public interface ApiService {
             @Path("id") String recipeId,  // Path parameter for recipe ID
             @Body AddRecipe updatedRecipe  // Request body with updated recipe data
     );
+    @DELETE("recipe/{id}")
+    Call<Void> deleteRecipe(
+            @Header("Authorization") String authorizationToken,
+            @Path("id") String recipeId
+    );
+}
