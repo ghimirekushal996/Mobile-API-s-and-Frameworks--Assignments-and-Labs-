@@ -1,25 +1,23 @@
-package com.kushal.recipeapp;
+package com.kushal.recipeapp.screen;
 
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.kushal.recipeapp.adapter.RecipeAdapter;
-import com.kushal.recipeapp.api.ApiClient;
-import com.kushal.recipeapp.api.ApiService;
-import com.kushal.recipeapp.models.Recipe;
-import com.kushal.recipeapp.screen.AddUpdateRecipeActivity;
-import com.kushal.recipeapp.screen.LoginActivity;
+import com.kushal.recipeapp.R;
+import com.kushal.recipeapp.adapter.MyRecipeAdapter;
+import com.kushal.recipeapp.network_config.ApiClient;
+import com.kushal.recipeapp.network_config.ApiService;
+import com.kushal.recipeapp.models.RecipeResponseModel;
 import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 
 import java.util.List;
@@ -31,16 +29,27 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
     private RecyclerView recyclerView;
-    private RecipeAdapter adapter;
+    private MyRecipeAdapter adapter;
     FloatingActionButton floatingActionButton;
+
+    Button btnLog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
         recyclerView = findViewById(R.id.recipeRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        btnLog = findViewById(R.id.logout);
+        btnLog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                logoutUser();
+            }
+        });
 
         floatingActionButton = findViewById(R.id.fab);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
@@ -68,17 +77,17 @@ public class MainActivity extends AppCompatActivity {
         ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
 
         // Call the API to fetch recipes with the Authorization token
-        Call<List<Recipe>> call = apiService.getRecipes(token);
+        Call<List<RecipeResponseModel>> call = apiService.getRecipes(token);
 
-        call.enqueue(new Callback<List<Recipe>>() {
+        call.enqueue(new Callback<List<RecipeResponseModel>>() {
             @Override
-            public void onResponse(Call<List<Recipe>> call, Response<List<Recipe>> response) {
+            public void onResponse(Call<List<RecipeResponseModel>> call, Response<List<RecipeResponseModel>> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     // Get the list of recipes from the response
-                    List<Recipe> recipes = response.body();
+                    List<RecipeResponseModel> recipes = response.body();
 
                     // Initialize the adapter with the recipes list
-                    adapter = new RecipeAdapter(MainActivity.this, recipes, apiService);
+                    adapter = new MyRecipeAdapter(MainActivity.this, recipes, apiService);
 
                     // Set the adapter for the RecyclerView
                     recyclerView.setAdapter(adapter);
@@ -89,40 +98,28 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<List<Recipe>> call, Throwable t) {
+            public void onFailure(Call<List<RecipeResponseModel>> call, Throwable t) {
                 Log.e(TAG, "Error fetching recipes", t);
                 Toast.makeText(MainActivity.this, "Error fetching recipes", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.action_logout) {
-            performLogout();
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    private void performLogout() {
+    private void logoutUser() {
         // Clear SharedPreferences
         SharedPreferences sharedPreferences = getSharedPreferences("YourPrefsName", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
+        editor.commit();
 
-        // Navigate to LoginActivity
+        // now take me to login screen
         Intent intent = new Intent(this, LoginActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
         finish();
     }
+
 }
 

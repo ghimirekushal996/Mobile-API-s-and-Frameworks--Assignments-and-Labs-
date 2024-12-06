@@ -10,21 +10,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.kushal.recipeapp.R;
-import com.kushal.recipeapp.api.ApiClient;
-import com.kushal.recipeapp.api.ApiService;
-import com.kushal.recipeapp.models.AddRecipe;
+import com.kushal.recipeapp.network_config.ApiClient;
+import com.kushal.recipeapp.network_config.ApiService;
+import com.kushal.recipeapp.models.CreateRecipeModel;
 import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import retrofit2.Call;
@@ -47,15 +42,6 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
 
         // Enable the back button in the app bar
         ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);  // Show back button
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-            actionBar.setTitle("Add Recipe");  // Default title for adding
-        } else {
-            actionBar.setDisplayHomeAsUpEnabled(true);  // Show back button
-            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
-            actionBar.setTitle("Edit Recipe");  // Default title for adding
-        }
 
 
         // Initialize views
@@ -85,6 +71,16 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
         String photoLink = intent.getStringExtra("photo_link");
         String ingredients = intent.getStringExtra("ingredients");
         String rating = intent.getStringExtra("averageRating");
+
+        if (recipeName == null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);  // Show back button
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+            actionBar.setTitle("Add Recipe");  // Default title for adding
+        } else {
+            actionBar.setDisplayHomeAsUpEnabled(true);  // Show back button
+            getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back);
+            actionBar.setTitle("Edit Recipe");  // Default title for adding
+        }
 
         if (recipeName == null) {
             btnSave.setText("Add Recipe");
@@ -144,7 +140,7 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
         }
 
         // Create the Recipe object to send to the API
-        AddRecipe addRecipe = new AddRecipe(recipeName, ingredientsList, cookingTime, difficulty, cuisine, description, photoLink, Float.valueOf(averageRatinging.toString()));
+        CreateRecipeModel addRecipe = new CreateRecipeModel(recipeName, ingredientsList, cookingTime, difficulty, cuisine, description, photoLink, Float.valueOf(averageRatinging.toString()));
 
         // Get the authorization token from SharedPreferences
         SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(this);
@@ -152,12 +148,12 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
 
         // Make the API call to create the recipe
         ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
-        Call<AddRecipe> call = apiService.createRecipe("Bearer " + token, addRecipe);
+        Call<CreateRecipeModel> call = apiService.createRecipe("Bearer " + token, addRecipe);
 
         // Execute the API call asynchronously
-        call.enqueue(new Callback<AddRecipe>() {
+        call.enqueue(new Callback<CreateRecipeModel>() {
             @Override
-            public void onResponse(Call<AddRecipe> call, Response<AddRecipe> response) {
+            public void onResponse(Call<CreateRecipeModel> call, Response<CreateRecipeModel> response) {
                 if (response.isSuccessful()) {
                     // Handle successful response
                     Toast.makeText(AddUpdateRecipeActivity.this, "Recipe saved successfully", Toast.LENGTH_SHORT).show();
@@ -171,12 +167,13 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<AddRecipe> call, Throwable t) {
+            public void onFailure(Call<CreateRecipeModel> call, Throwable t) {
                 // Handle failure (e.g., network error)
                 Toast.makeText(AddUpdateRecipeActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
+
     private void updateRecipe(String recipeId) {
         // Get the data from EditText fields
         String recipeName = etRecipeName.getText().toString();
@@ -205,7 +202,7 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
         }
 
         // Create the Recipe object to send to the API for updating
-        AddRecipe updateRecipe = new AddRecipe(recipeName, ingredientsList, cookingTime, difficulty, cuisine, description, photoLink, Float.valueOf(averageRatinging));
+        CreateRecipeModel updateRecipe = new CreateRecipeModel(recipeName, ingredientsList, cookingTime, difficulty, cuisine, description, photoLink, Float.valueOf(averageRatinging));
 
         // Get the authorization token from SharedPreferences
         SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(this);
@@ -213,12 +210,12 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
 
         // Make the API call to update the recipe
         ApiService apiService = ApiClient.getClient(this).create(ApiService.class);
-        Call<AddRecipe> call = apiService.updateRecipe("Bearer " + token, recipeId, updateRecipe); // PUT request
+        Call<CreateRecipeModel> call = apiService.updateRecipe("Bearer " + token, recipeId, updateRecipe); // PUT request
 
         // Execute the API call asynchronously
-        call.enqueue(new Callback<AddRecipe>() {
+        call.enqueue(new Callback<CreateRecipeModel>() {
             @Override
-            public void onResponse(Call<AddRecipe> call, Response<AddRecipe> response) {
+            public void onResponse(Call<CreateRecipeModel> call, Response<CreateRecipeModel> response) {
                 if (response.isSuccessful()) {
                     // Handle successful response
                     Toast.makeText(AddUpdateRecipeActivity.this, "Recipe updated successfully", Toast.LENGTH_SHORT).show();
@@ -232,7 +229,7 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<AddRecipe> call, Throwable t) {
+            public void onFailure(Call<CreateRecipeModel> call, Throwable t) {
                 // Handle failure (e.g., network error)
                 Toast.makeText(AddUpdateRecipeActivity.this, "Network error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
             }
@@ -248,4 +245,5 @@ public class AddUpdateRecipeActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+}
 

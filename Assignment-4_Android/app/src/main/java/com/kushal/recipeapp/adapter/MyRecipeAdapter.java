@@ -8,25 +8,26 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.kushal.recipeapp.api.ApiService;
-import com.kushal.recipeapp.models.Recipe;
+import com.kushal.recipeapp.R;
+import com.kushal.recipeapp.network_config.ApiService;
+import com.kushal.recipeapp.models.RecipeResponseModel;
 import com.kushal.recipeapp.screen.AddUpdateRecipeActivity;
 import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 import com.squareup.picasso.Picasso;
 import java.util.List;
 
 
-public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeViewHolder> {
+public class MyRecipeAdapter extends RecyclerView.Adapter<MyRecipeAdapter.RecipeViewHolder> {
     private final Context context;
-    private final List<Recipe> recipeList;
+    private final List<RecipeResponseModel> recipeList;
 
     ApiService apiService; // Make sure ApiService is initialized in your adapter
 
-    public RecipeAdapter(Context context, List<Recipe> recipeList, ApiService apiService) {
+    public MyRecipeAdapter(Context context, List<RecipeResponseModel> recipeList, ApiService apiService) {
         this.context = context;
         this.recipeList = recipeList;
         this.apiService = apiService;
@@ -43,7 +44,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     @Override
     public void onBindViewHolder(@NonNull RecipeViewHolder holder, int position) {
         // Get the current recipe and bind the data to the views
-        Recipe recipe = recipeList.get(position);
+        RecipeResponseModel recipe = recipeList.get(position);
         holder.tvRecipeName.setText(recipe.getRecipeName());
         holder.tvCuisine.setText(recipe.getCuisine());
         holder.tvRating.setText(String.valueOf(recipe.getAverageRating()));
@@ -76,7 +77,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     }
     // Method to show the Edit/Delete dialog
     private void showEditDeleteDialog(int position) {
-        final Recipe selectedRecipe = recipeList.get(position);
+        final RecipeResponseModel selectedRecipe = recipeList.get(position);
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setTitle("Choose an Action");
@@ -96,22 +97,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
                 context.startActivity(intent);
             } else if (which == 1) {
                 // Delete action
-                showDeleteConfirmationDialog(position, selectedRecipe.get_id());
+                // Perform deletion by calling the delete function
+                deleteRecipe(position, selectedRecipe.get_id());
             }
         });
-        builder.show();
-    }
-
-    // Method to show confirmation dialog for delete
-    private void showDeleteConfirmationDialog(int position, String recipeId) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Are you sure?");
-        builder.setMessage("Do you really want to delete this recipe?");
-        builder.setPositiveButton("Yes, Delete", (dialog, which) -> {
-            // Perform deletion by calling the delete function
-            deleteRecipe(position, recipeId);
-        });
-        builder.setNegativeButton("Cancel", null);
         builder.show();
     }
 
@@ -119,10 +108,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeView
     private void deleteRecipe(int position, String recipeId) {
         // Get the token from shared preferences
         SharedPreferenceManager preferenceManager = new SharedPreferenceManager(context.getApplicationContext());
-        String token = preferenceManager.getToken();
+        String authTken = preferenceManager.getToken();
 
         // Call the API to delete the recipe
-        apiService.deleteRecipe(token, recipeId)
+        apiService.deleteRecipe(authTken, recipeId)
                 .enqueue(new retrofit2.Callback<Void>() {
                     @Override
                     public void onResponse(retrofit2.Call<Void> call, retrofit2.Response<Void> response) {

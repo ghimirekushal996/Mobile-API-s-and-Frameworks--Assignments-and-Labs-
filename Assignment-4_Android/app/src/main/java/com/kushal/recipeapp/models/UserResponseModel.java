@@ -1,12 +1,18 @@
 package com.kushal.recipeapp.models;
 
-public class LoginRequest {
+public class UserResponseModel {
+    private String fullname;
     private String email;
     private String password;
 
-    public LoginRequest(String email, String password) {
+    public UserResponseModel(String fullname, String email, String password) {
+        this.fullname = fullname;
         this.email = email;
         this.password = password;
+    }
+
+    public String getFullname() {
+        return fullname;
     }
 
     public String getEmail() {
@@ -17,3 +23,4 @@ public class LoginRequest {
         return password;
     }
 }
+

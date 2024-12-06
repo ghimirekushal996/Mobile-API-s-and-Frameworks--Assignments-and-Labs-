@@ -1,4 +1,4 @@
-package com.kushal.recipeapp.api;
+package com.kushal.recipeapp.network_config;
 
 import android.content.Context;
 
@@ -14,8 +14,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import java.io.IOException;
 
 public class ApiClient {
-    private static final String BASE_URL = "http://192.168.2.34:3001/"; // Your base URL
-    public static final String IMAGE_URL = "http://192.168.2.34:3001"; // Image URL
+    // Your base URL
+    private static final String BASE_URL = "http://10.0.2.2:3000/api/";
     private static Retrofit retrofit;
 
     public static Retrofit getClient(Context context) {

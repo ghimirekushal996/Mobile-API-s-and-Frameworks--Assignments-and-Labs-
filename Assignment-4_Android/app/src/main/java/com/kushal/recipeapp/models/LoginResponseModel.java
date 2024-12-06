@@ -1,12 +1,7 @@
 package com.kushal.recipeapp.models;
 
-public class LoginResponse {
-    private String message;
+public class LoginResponseModel {
     private String token;
-
-    public String getMessage() {
-        return message;
-    }
 
     public String getToken() {
         return token;

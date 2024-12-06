@@ -2,20 +2,17 @@ package com.kushal.recipeapp.screen;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
-import com.kushal.recipeapp.MainActivity;
 import com.kushal.recipeapp.R;
-import com.kushal.recipeapp.controller.LoginController;
-import com.kushal.recipeapp.models.LoginRequest;
+import com.kushal.recipeapp.route_path_network.LoginController;
+import com.kushal.recipeapp.models.LoginRequestModel;
 import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 
 public class LoginActivity extends AppCompatActivity {
@@ -23,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button buttonLogin;
     private LoginController loginController;
     private SharedPreferenceManager sharedPreferenceManager;
+    TextView textRegister;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +30,15 @@ public class LoginActivity extends AppCompatActivity {
         editTextEmail = findViewById(R.id.editTextEmail);
         editTextPassword = findViewById(R.id.editTextPassword);
         buttonLogin = findViewById(R.id.buttonLogin);
+
+        textRegister = findViewById(R.id.register);
+        textRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
 
         loginController = new LoginController(getApplicationContext());
         sharedPreferenceManager = new SharedPreferenceManager(this);
@@ -49,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void performLogin(String email, String password) {
-        LoginRequest request = new LoginRequest(email, password);
+        LoginRequestModel request = new LoginRequestModel(email, password);
         loginController.loginUser(request, new LoginController.LoginCallback() {
             @Override
             public void onSuccess(String message, String token) {

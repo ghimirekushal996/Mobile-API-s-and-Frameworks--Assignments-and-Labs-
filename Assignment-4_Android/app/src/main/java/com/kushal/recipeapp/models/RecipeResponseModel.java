@@ -2,7 +2,7 @@ package com.kushal.recipeapp.models;
 
 import java.util.List;
 
-public class Recipe {
+public class RecipeResponseModel {
     private String _id; // Changed from id to _id to match the JSON field
     private String recipeName;
     private List<String> ingredients;
@@ -14,9 +14,9 @@ public class Recipe {
     private double averageRating;
 
     // Constructor
-    public Recipe(String _id, String recipeName, List<String> ingredients, int cookingTime,
-                  String difficulty, String cuisine, String description, String photoLink,
-                  double averageRating) {
+    public RecipeResponseModel(String _id, String recipeName, List<String> ingredients, int cookingTime,
+                               String difficulty, String cuisine, String description, String photoLink,
+                               double averageRating) {
         this._id = _id;
         this.recipeName = recipeName;
         this.ingredients = ingredients;

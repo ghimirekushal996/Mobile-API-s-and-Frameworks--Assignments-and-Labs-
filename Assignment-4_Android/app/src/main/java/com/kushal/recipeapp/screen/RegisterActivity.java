@@ -7,20 +7,16 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.kushal.recipeapp.R;
-import com.kushal.recipeapp.controller.RegisterController;
-import com.kushal.recipeapp.models.User;
+import com.kushal.recipeapp.route_path_network.RegisterController;
+import com.kushal.recipeapp.models.UserResponseModel;
 
 public class RegisterActivity extends AppCompatActivity {
     private EditText etFullName, etEmail, etPassword;
-    private Button btnRegister;
+    private Button btnRegister, btnCancelTxt;
     private RegisterController registerController;
 
     @Override
@@ -45,6 +41,16 @@ public class RegisterActivity extends AppCompatActivity {
         etPassword = findViewById(R.id.etPassword);
         btnRegister = findViewById(R.id.btnRegister);
 
+        btnCancelTxt = findViewById(R.id.btnCancel);
+        btnCancelTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
         registerController = new RegisterController(getApplicationContext());
 
         btnRegister.setOnClickListener(view -> {
@@ -55,7 +61,7 @@ public class RegisterActivity extends AppCompatActivity {
             if (fullname.isEmpty() || email.isEmpty() || password.isEmpty()) {
                 Toast.makeText(this, "All fields are required", Toast.LENGTH_SHORT).show();
             } else {
-                User user = new User(fullname, email, password);
+                UserResponseModel user = new UserResponseModel(fullname, email, password);
                 registerController.registerUser(user, new RegisterController.RegisterCallback() {
                     @Override
                     public void onSuccess(String message) {

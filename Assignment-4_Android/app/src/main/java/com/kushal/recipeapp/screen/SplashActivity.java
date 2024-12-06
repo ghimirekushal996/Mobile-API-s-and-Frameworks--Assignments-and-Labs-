@@ -14,30 +14,34 @@ import com.kushal.recipeapp.R;
 import com.kushal.recipeapp.sharedpreference.SharedPreferenceManager;
 
 public class SplashActivity extends AppCompatActivity {
-    private static final int SPLASH_DELAY = 2000; // 2 seconds delay
+
+    // noew add here 2 second to laod the spalash screen
+
+    private static final int SPLASH_DELAY = 2000;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_splash_screen);
+        setContentView(R.layout.activity_splash);
 
         // Initialize SharedPreferenceManager
         SharedPreferenceManager sharedPreferenceManager = new SharedPreferenceManager(this);
 
-        // Delay for SPLASH_DELAY and then check token
+        // and delay the screen to proceed this function
         new Handler().postDelayed(() -> {
-//            String token = sharedPreferenceManager.getToken();
+            String token = sharedPreferenceManager.getToken();
             Intent intent;
-//            if (token != null && !token.isEmpty()) {
-//                // Token exists, go to MainActivity
-//                intent = new Intent(SplashActivity.this, MainActivity.class);
-//            } else {
-//                // Token does not exist, go to LandingActivity
-//                intent = new Intent(SplashActivity.this, LandingActivity.class);
-//            }
-            intent = new Intent(SplashActivity.this, LandingActivity.class);
-            startActivity(intent);
-            finish(); // Close SplashActivity
+            if (token != null && !token.isEmpty()) {
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            } else {
+                intent = new Intent(SplashActivity.this, LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }, SPLASH_DELAY);
     }
 }

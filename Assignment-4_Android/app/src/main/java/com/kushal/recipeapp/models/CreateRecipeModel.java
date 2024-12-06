@@ -2,7 +2,7 @@ package com.kushal.recipeapp.models;
 
 import java.util.List;
 
-public class AddRecipe {
+public class CreateRecipeModel {
     private String recipeName;
     private List<String> ingredients;
     private int cookingTime;
@@ -13,8 +13,8 @@ public class AddRecipe {
     private float averageRating; // Add this field for average rating
 
     // Constructor
-    public AddRecipe(String recipeName, List<String> ingredients, int cookingTime, String difficulty,
-                     String cuisine, String description, String photoLink, float averageRating) {
+    public CreateRecipeModel(String recipeName, List<String> ingredients, int cookingTime, String difficulty,
+                             String cuisine, String description, String photoLink, float averageRating) {
         this.recipeName = recipeName;
         this.ingredients = ingredients;
         this.cookingTime = cookingTime;

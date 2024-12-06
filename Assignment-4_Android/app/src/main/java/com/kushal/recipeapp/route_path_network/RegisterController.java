@@ -1,10 +1,10 @@
-package com.kushal.recipeapp.controller;
+package com.kushal.recipeapp.route_path_network;
 
 import android.content.Context;
 
-import com.kushal.recipeapp.api.ApiClient;
-import com.kushal.recipeapp.api.ApiService;
-import com.kushal.recipeapp.models.User;
+import com.kushal.recipeapp.network_config.ApiClient;
+import com.kushal.recipeapp.network_config.ApiService;
+import com.kushal.recipeapp.models.UserResponseModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -17,7 +17,7 @@ public class RegisterController {
         apiService = ApiClient.getClient(context).create(ApiService.class);
     }
 
-    public void registerUser(User user, RegisterCallback callback) {
+    public void registerUser(UserResponseModel user, RegisterCallback callback) {
         Call<Void> call = apiService.registerUser(user);
         call.enqueue(new Callback<Void>() {
             @Override
