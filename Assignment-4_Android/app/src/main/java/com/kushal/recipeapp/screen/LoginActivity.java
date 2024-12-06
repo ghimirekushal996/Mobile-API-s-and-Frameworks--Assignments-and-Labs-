@@ -36,3 +36,27 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void performLogin(String email, String password) {
+        LoginRequest request = new LoginRequest(email, password);
+        loginController.loginUser(request, new LoginController.LoginCallback() {
+            @Override
+            public void onSuccess(String message, String token) {
+                sharedPreferenceManager.saveToken(token);
+                Toast.makeText(LoginActivity.this, message, Toast.LENGTH_SHORT).show();
+                navigateToHome();
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(LoginActivity.this, error, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void navigateToHome() {
+        Intent intent = new Intent(LoginActivity.this, MainActivity.class); // Replace with your Home screen activity
+        startActivity(intent);
+        finish();
+    }
+}
+
